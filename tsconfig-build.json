@@ -1,34 +1,22 @@
 {
   "compilerOptions": {
     // 编译结果版本
-    "target": "es5",
+    "target": "es6",
     "outDir": "",
-    //  使用的模块标准
     "module": "ESNext",
-    //  使用 node解析规则
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    //  编译出错不再执行
     "noEmitOnError": true,
-    //  禁用any
     "noImplicitAny": true,
     "noImplicitThis": true,
-    // 严格模式
     "alwaysStrict": true,
-    //  删除注释
     "removeComments": true,
-    //  启用ES装饰器
-    //  不生成d.ts
     "declaration": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     //  引入的库文件
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
+
+    "typeRoots": ["node_modules/@types", "./types"]
   },
-  "include": [
-    "./src/**.ts"
-  ]
+  "include": ["./src/**.ts", "./types/**.d.ts"]
 }

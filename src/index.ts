@@ -1,21 +1,17 @@
-import fg from 'fast-glob'
 import { OptionConfig } from './type'
-import { componentPathResolver, write } from './util'
+import { defaultComponentResolver, globsPath, output } from './core'
+import { isNil } from './is'
 //  匹配文件名称的正则
 
-const COMPONENT_REGEX = /\/([\w\d-]+)([.-]component)?\/([\w\d-]+)([.-]component)?\.(vue|tsx|jsx)$/
+export default function vueComponentVolar(options: OptionConfig) {
 
-export default function vueComponentHelper(options: OptionConfig) {
-  const files: string[] = fg.sync(options.entry)
+  if(isNil(options)){
+    throw new Error('vueComponentVolar options is undefined')
+  }
+
+  const globalPath: string[] = globsPath(options.globs, options.ignore)
   
-  const components = files.filter(file => COMPONENT_REGEX.test(file))
-    .map(file => {
-      const component = (options?.componentPathResolver ||
-        componentPathResolver)(file, options)
-      if (!component) return ''
-      return component.endsWith(';') ? component : component + ';'
-    })
-    .join('')
+  const components = globalPath.map(gp => (options?.componentResolver || defaultComponentResolver)(gp, options))
   
-  write(components, options)
+  output(components, options)
 }

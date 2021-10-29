@@ -1,13 +1,16 @@
-一个生成 vue GlobalComponents 文件的工具
+一个生成支持Volar插件 vue GlobalComponents 文件的工具
 
 ```javascript
-const vueComponentHelper = require('vue-component-helper');
-vueComponentHelper({
-  entry: './test/component/modules/**/*.{vue,tsx,jsx}',
-  singleQuote: true,
-  tabWidth: 2,
-  prefixPath: '@/',
-  outfile: './index.d.ts',
-  semi: true,
+const vueComponentVolar = require('vue-component-volar');
+vueComponentVolar({
+	globs: './test/component/**/*.{vue,tsx,jsx}',
+	output: './test/index.d.ts',
+	prefixPath: './component',
+	ignoreExt: ['tsx'],
+	namingStyle: 'hyphen',
+	tabWidth: 2,
+	semi: true,
+	singleQuote: true,
+	
 })
 ```

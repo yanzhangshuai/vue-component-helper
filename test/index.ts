@@ -1,12 +1,13 @@
-import vueComponentHelper from '../lib/index'
+import vueComponentVolar from '../lib/index'
 
-
-
-vueComponentHelper({
-  entry: './test/component/modules/**/*.{vue,tsx,jsx}',
-  singleQuote: true,
-  tabWidth: 2,
-  prefixPath: '@/',
-  outfile: './index.d.ts',
-  semi: true,
+vueComponentVolar({
+	globs: './test/component/**/*.{vue,tsx,jsx}',
+	singleQuote: true,
+	ignoreExt: ['tsx'],
+	namingStyle: 'hyphen',
+	tabWidth: 2,
+	prefixPath: './component',
+	output: './test/index.d.ts',
+	endOfLine: true,
+	semi: true,
 })

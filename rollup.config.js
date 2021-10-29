@@ -1,12 +1,12 @@
 import { defineConfig } from 'rollup'
-import ts from '@rollup/plugin-typescript'
+import typescript from '@rollup/plugin-typescript'
 
 
 export default defineConfig({
   input: './src/index.ts',
-  external: ['fast-glob'],
+  external: ['fast-glob', 'naming-style', 'tslib'],
   plugins: [
-    ts({
+    typescript({
       tsconfig: './tsconfig-build.json',
     }),
   ],
@@ -19,8 +19,7 @@ export default defineConfig({
     {
       file: 'lib/index.js',
       format: 'umd',
-      exports: 'named',
-      name: 'ComponentsHelper',
+      name: 'ComponentVolar',
       compact: true,
     },
   ],
