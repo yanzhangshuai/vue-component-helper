@@ -1,0 +1,52 @@
+{
+  "name": "vue-component-helper",
+  "version": "1.0.0",
+  "author": "mowenjinzhao<yanzhangshuai@126.com>",
+  "license": "MIT",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "lib/index.es.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.es.js",
+      "require": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "test": "cross-env TS_NODE_PROJECT=\"tsconfig.json\" ts-node ./test/index.ts",
+    "lint": "eslint . --fix --ext .ts,.js --ignore-pattern \"/lib/\""
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "vue",
+    "components",
+    "component library",
+    "helper",
+    "volar"
+  ],
+  "bugs": {
+    "url": "https://github.com/tolking/components-helper/issues"
+  },
+  "homepage": "https://github.com/tolking/components-helper#readme",
+  "engines": {
+    "node": ">10.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.1.0",
+    "rollup": "^2.58.3",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.7"
+  }
+}
