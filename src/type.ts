@@ -28,6 +28,11 @@ export type OptionConfig = {
 	 * 生成 组件引用路径的前缀路径
 	 */
 	prefixPath?: string;
+
+	/**
+	 * 组件名称前缀
+	 */
+	prefixName?: string;
 	/**
 	 *  忽略生成的后缀。
 	 *  例如可以忽略生成 ts,tsx这些后缀

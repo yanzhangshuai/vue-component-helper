@@ -6,7 +6,7 @@ import { isArray, isString, isNil } from './is'
 import { tabWidthHandler, outputPathHandler, namingStyleHandler, pathHandler, pathPartHandler, quoteHandler, semiHandler } from './util'
 
 function sync(globs: string, ignore?: string[]) {
-	
+
 	const globsPath = fg.sync(globs, { unique: true, onlyFiles: true, ignore: ignore, absolute: true })
 
 	// 	根据globs 绝对路径获取除去前缀的路基
@@ -31,22 +31,23 @@ export function globsPath(globs: string | string[], ignore?: string[]): string[]
 	return globsPath
 }
 
-export function defaultComponentResolver(componentPath: string, options?: OptionConfig) : { name: string; path: string } {
+export function defaultComponentResolver(componentPath: string, option?: OptionConfig) : { name: string; path: string } {
 	if (!isString(componentPath)) {
 		throw new Error('componentPath is not a string')
 	}
 
+	const prefixName = option?.prefixName || ''
 	const parsedPath = path.parse(componentPath)
 
 	const componentName = parsedPath.name === 'index' ? parsedPath.dir.substring(parsedPath.dir.lastIndexOf('/') + 1) : parsedPath.name
 
 
 	// 是否添加后缀
-	const ext = !isArray(options.ignoreExt) || !options.ignoreExt.includes(parsedPath.ext.substring(1))
+	const ext = !isArray(option.ignoreExt) || !option.ignoreExt.includes(parsedPath.ext.substring(1))
 
-	const importPath = pathHandler(options.prefixPath || './') + path.join(parsedPath.dir, ext ? parsedPath.base : parsedPath.name)
-	
-	return { name: namingStyleHandler(componentName, options?.namingStyle), path: importPath }
+	const importPath = pathHandler(option.prefixPath || './') + path.join(parsedPath.dir, ext ? parsedPath.base : parsedPath.name)
+
+	return { name: namingStyleHandler(prefixName + componentName, option?.namingStyle), path: importPath }
 
 }
 

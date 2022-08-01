@@ -6,6 +6,7 @@ vueComponentVolar({
 	globs: './test/component/**/*.{vue,tsx,jsx}',
 	output: './test/index.d.ts',
 	prefixPath: './component',
+    prefixName: 'm-',
 	ignoreExt: ['tsx'],
 	namingStyle: 'hyphen',
 	tabWidth: 2,

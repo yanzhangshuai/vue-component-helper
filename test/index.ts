@@ -7,6 +7,7 @@ vueComponentVolar({
 	namingStyle: 'hyphen',
 	tabWidth: 2,
 	prefixPath: './component',
+	prefixName: 'm-',
 	output: './test/index.d.ts',
 	endOfLine: true,
 	semi: true,
